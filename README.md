@@ -44,3 +44,6 @@ Passwords are bcrypt-hashed. JWTs are required for protected routes. Server-side
 5. Mark a task complete.
 6. Explain architecture and deployment.
 7. Close with impact: fewer missed deadlines, one source of truth.
+
+
+Deployment verification complete.
