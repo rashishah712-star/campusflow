@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { prisma } from '../index.js';
 import { requireAuth, AuthRequest } from '../middleware/auth.js';
-const router=Router(); const body=z.object({name:z.string().min(2).max(80),code:z.string().min(2).max(20),color:z.string().max(20).optional()});
+const c=await prisma.course.findFirst({where:{id:String(req.params.id),ownerId:req.user!.id}});
 router.use(requireAuth);
 router.get('/',async(req:AuthRequest,res,next)=>{try{res.json(await prisma.course.findMany({where:{ownerId:req.user!.id},include:{_count:{select:{tasks:true}}},orderBy:{createdAt:'asc'}}))}catch(e){next(e)}});
 router.post('/',async(req:AuthRequest,res,next)=>{try{res.status(201).json(await prisma.course.create({data:{...body.parse(req.body),ownerId:req.user!.id}}))}catch(e){next(e)}});
