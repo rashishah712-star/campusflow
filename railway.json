@@ -1,0 +1,1 @@
+{"build":{"builder":"NIXPACKS"},"deploy":{"startCommand":"npm --workspace server run start","healthcheckPath":"/health","healthcheckTimeout":100}}
